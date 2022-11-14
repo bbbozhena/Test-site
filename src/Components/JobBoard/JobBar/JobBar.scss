@@ -1,0 +1,68 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+body {
+    background: rgba(230, 233, 242, 1);
+}
+
+li {
+    margin: 29px 100px;
+    cursor: pointer;
+}
+.job-bar-long {
+    background: #ffffff;
+    box-shadow: 2px 1px 7px rgba(0, 0, 0, 0.08), 0px 2px 1px -1px rgba(0, 0, 0, 0.04), 0px 1px 3px rgba(0, 0, 0, 0.12);
+    border-radius: 8px;
+    h1 {
+        font-family: "Proxima Nova";
+        font-style: normal;
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 25px;
+        letter-spacing: -0.625px;
+        color: #3a4562;
+        flex: none;
+        order: 1;
+        flex-grow: 0;
+        width: 712px;
+        height: 50px;
+    }
+    .description {
+        font-family: "Proxima Nova";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 25px;
+        letter-spacing: 0.23619px;
+        color: #878d9d;
+        flex: none;
+        order: 2;
+        align-self: stretch;
+        flex-grow: 0;
+        margin: 4px 0px;
+    }
+    .location {
+        font-family: "Proxima Nova";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 25px;
+        letter-spacing: 0.23619px;
+        color: #878d9d;
+    }
+}
+.post-day {
+    font-family: "Proxima Nova";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 25px;
+    display: flex;
+    align-items: flex-end;
+    text-align: right;
+    letter-spacing: 0.23619px;
+    color: #878d9d;
+    flex: none;
+    order: 1;
+    flex-grow: 1;
+}
