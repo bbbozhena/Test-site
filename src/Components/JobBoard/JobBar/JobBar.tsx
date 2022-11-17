@@ -2,6 +2,14 @@ import React from "react";
 import "./JobBar.scss";
 
 function JobBar({ item }) {
+  const photos = [
+    "Hospital image in circle.svg",
+    "Hospital image in circle2.svg",
+    "Hospital image in circle3.svg",
+    "Hospital image in circle4.svg",
+    "Hospital image in circle5.svg",
+    "Hospital image in circle6.svg",
+  ];
   return (
     <>
       <ul className="flex flex-col ">
@@ -12,7 +20,7 @@ function JobBar({ item }) {
             <p className="description">Department name • {item.name}</p>
             <div className="flex">
               <img className="mr-2" src="./icons/Combined Shape.svg" />
-              <p className="location">Vienna, Austria</p>
+              <p className="location"></p>
             </div>
           </div>
           <img className="px-10" src="./icons/Rating.svg"></img>
