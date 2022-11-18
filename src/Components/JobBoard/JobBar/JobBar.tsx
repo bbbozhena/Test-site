@@ -1,5 +1,6 @@
 import React from "react";
 import "./JobBar.scss";
+import moment from "moment";
 
 function JobBar({ item }) {
   const photos = [
@@ -11,6 +12,10 @@ function JobBar({ item }) {
     "Hospital image in circle6.svg",
   ];
   const randomPhoto = photos[Math.floor(Math.random() * photos.length)];
+
+  const daysAgo = moment(`${item.createdAt}`, "YYYYMMDD").fromNow();
+  console.log(daysAgo);
+
   return (
     <>
       <ul className="flex flex-col ">
@@ -32,7 +37,7 @@ function JobBar({ item }) {
               width={16}
               height={20}
             />
-            <p className="post-day">Posted 2 days ago</p>
+            <p className="post-day">Posted {daysAgo}</p>
           </div>
         </li>
       </ul>
