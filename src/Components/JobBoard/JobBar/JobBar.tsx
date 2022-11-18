@@ -10,11 +10,12 @@ function JobBar({ item }) {
     "Hospital image in circle5.svg",
     "Hospital image in circle6.svg",
   ];
+  const randomPhoto = photos[Math.floor(Math.random() * photos.length)];
   return (
     <>
       <ul className="flex flex-col ">
         <li className="flex flex-row job-bar-long  px-12 py-10">
-          <img className="mr-6" src="Hospital image in circle.svg" width={85} />
+          <img className="mr-6" src={randomPhoto} width={85} />
           <div className="text-left">
             <h1>{item.title}</h1>
             <p className="description">Department name • {item.name}</p>
