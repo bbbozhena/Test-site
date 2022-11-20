@@ -14,7 +14,6 @@ function JobBar({ item }) {
   const randomPhoto = photos[Math.floor(Math.random() * photos.length)];
 
   const daysAgo = moment(`${item.createdAt}`, "YYYYMMDD").fromNow();
-  console.log(daysAgo);
 
   return (
     <>

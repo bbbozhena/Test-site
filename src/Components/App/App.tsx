@@ -22,7 +22,7 @@ function App() {
   //   .get("v1/reverse")
   //   .then((response) => {
   //     setGeolocation(response);
-  //     setGeolocation(response);
+  //     setGeolocation(response); 
   //   })
   //   .catch((error) => {
   //     console.log(error);
