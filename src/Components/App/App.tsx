@@ -2,32 +2,9 @@ import React, { useEffect, useState } from "react";
 import "./App.scss";
 import JobBar from "../JobBoard/JobBar/JobBar.tsx";
 import axios from "axios";
+import usePagination from "../../Hooks/usePagination.tsx";
 
 function App() {
-  // const [geolocation, setGeolocation] = useState([]);
-
-  // const geoUrl = "http://api.positionstack.com/";
-  // const geoToken = "6228fa4172051093bacd0c4c46e71877";
-  // const latLot = " 40.7638435,-73.9729691";
-
-  // const instance = axios.create({
-  //   baseURL: geoUrl,
-  //   timeout: 1000,
-  //   headers: {
-  //     Authorization: "? access_key =" + geoToken + "& query =" + latLot,
-  //   },
-  // });
-
-  // instance
-  //   .get("v1/reverse")
-  //   .then((response) => {
-  //     setGeolocation(response);
-  //     setGeolocation(response); 
-  //   })
-  //   .catch((error) => {
-  //     console.log(error);
-  //   });
-
   const apiUrl = "https://api.json-generator.com/";
   const apiToken = "wm3gg940gy0xek1ld98uaizhz83c6rh2sir9f9fu";
 
@@ -51,11 +28,46 @@ function App() {
       });
   }, []);
 
+  const {
+    firstContentIndex,
+    lastContentIndex,
+    nextPage,
+    prevPage,
+    page,
+    setPage,
+    totalPages,
+  } = usePagination({
+    contentPerPage: 5,
+    count: inf.length,
+  });
+
   return (
     <div className="App">
-      {inf.map((i, id) => {
-        return <JobBar item={i} key={id} />;
-      })}
+      <div className="items">
+        {inf.slice(firstContentIndex, lastContentIndex).map((el: any) => {
+          return <JobBar item={el} key={el.id} />;
+        })}
+      </div>
+      <div className="pagination">
+        <p className="text">
+          {page}/{totalPages}
+        </p>
+        <button onClick={prevPage} className="page">
+          &larr;
+        </button>
+        {[...Array(totalPages).keys()].map((el) => (
+          <button
+            onClick={() => setPage(el + 1)}
+            key={el}
+            className={`page ${page === el + 1 ? "active" : ""}`}
+          >
+            {el + 1}
+          </button>
+        ))}
+        <button onClick={nextPage} className="page">
+          &rarr;
+        </button>
+      </div>
     </div>
   );
 }
