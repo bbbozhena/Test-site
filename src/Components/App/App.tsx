@@ -52,21 +52,23 @@ function App() {
         <p className="text">
           {page}/{totalPages}
         </p>
-        <button onClick={prevPage} className="page">
-          &larr;
-        </button>
-        {[...Array(totalPages).keys()].map((el) => (
-          <button
-            onClick={() => setPage(el + 1)}
-            key={el}
-            className={`page ${page === el + 1 ? "active" : ""}`}
-          >
-            {el + 1}
+        <div className="pag-block">
+          <button onClick={prevPage} className="page">
+            &larr;
           </button>
-        ))}
-        <button onClick={nextPage} className="page">
-          &rarr;
-        </button>
+          {[...Array(totalPages).keys()].map((el) => (
+            <button
+              onClick={() => setPage(el + 1)}
+              key={el}
+              className={`page ${page === el + 1 ? "active" : ""} number`}
+            >
+              {el + 1}
+            </button>
+          ))}
+          <button onClick={nextPage} className="page">
+            &rarr;
+          </button>
+        </div>
       </div>
     </div>
   );
