@@ -3,12 +3,13 @@ import "./App.scss";
 import JobBar from "../JobBoard/JobBar/JobBar.tsx";
 import axios from "axios";
 import usePagination from "../../Hooks/usePagination.tsx";
+import JobDetails from "../JobDetails/JobDetail/JobDetail.tsx";
 
 function App() {
+  const [inf, setInf] = useState([]);
+
   const apiUrl = "https://api.json-generator.com/";
   const apiToken = "wm3gg940gy0xek1ld98uaizhz83c6rh2sir9f9fu";
-
-  const [inf, setInf] = useState([]);
 
   useEffect(() => {
     const instance = axios.create({
@@ -70,6 +71,7 @@ function App() {
           </button>
         </div>
       </div>
+      <JobDetails />
     </div>
   );
 }
