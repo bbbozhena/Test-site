@@ -14,6 +14,7 @@ function JobDetails() {
             <p>Share</p>
           </div>
         </header>
+        <div className="line"></div>
         <div className="flex flex-col justify-items-start">
           <button className="apply-button">Apply now</button>
           <div className="job-title flex  justify-between ">
@@ -67,7 +68,7 @@ function JobDetails() {
           <p className="font-bold text-start mt-10 mb-5">
             Compensation & Benefits:
           </p>
-          <ul className="text-start list-disc list-outside">
+          <ul className="text-start list-disc list-outside mb-5">
             Our physicians enjoy a wide range of benefits, including:
             <li className="m-0">
               Very competitive compensation package with bonuses
@@ -79,29 +80,36 @@ function JobDetails() {
             </li>
           </ul>
           <button className="apply-button">Apply now</button>
-          <div className="float-left">
-            <h3></h3>
-            <p></p>
-            <div>
-              <div>Full time</div>
-              <div>Full time</div>
-              <div>Full time</div>
+          <div className="additional-info flex flex-col mt-20">
+            <h3 className=" text-start">Additional info</h3>
+            <div className="line"></div>
+            <p className="text-start mb-2">Employment type</p>
+            <div className="flex">
+              <div className="employments mr-2">Full time</div>
+              <div className="employments mr-2">Part time</div>
+              <div className="employments">Temporary</div>
             </div>
-            <p></p>
-            <div>
-              <div>Full time</div>
-              <div>Full time</div>
+            <p className="text-start mt-5 mb-2">Benefits</p>
+            <div className="flex">
+              <div className="employments2 mr-2">Full time</div>
+              <div className="employments2 mr-2">Full time</div>
             </div>
           </div>
-          <div>
-            <h3></h3>
-            <img src="" />
-            <img src="" />
-            <img src="" />
+          <div className="attached">
+            <h3 className="text-start mt-20">Attached images</h3>
+            <div className="line"></div>
+            <div className="flex mt-5">
+              <img className="mr-4" src="team.svg" />
+              <img className="mr-4" src="headers.svg" />
+              <img src="build.svg" />
+            </div>
           </div>
         </div>
-        <button></button>
       </div>
+      <button className="flex button-return">
+        <img className="mr-10" src="./icons/Arrow.svg" />
+        <p>RETURN TO JOB BOARD</p>
+      </button>
 
       <div>
         <div className="map-bllock"></div>
