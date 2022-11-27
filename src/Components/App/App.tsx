@@ -71,7 +71,9 @@ function App() {
           </button>
         </div>
       </div>
-      <JobDetails />
+      {inf.map((i) => {
+        return <JobDetails item={i} key={i.id}/>
+      })}
     </div>
   );
 }

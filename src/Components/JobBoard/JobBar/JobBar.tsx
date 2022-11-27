@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./JobBar.scss";
 import moment from "moment";
+import JobDetails from "../../JobDetails/JobDetail/JobDetail";
 
 function JobBar({ item }) {
   const photos = [
