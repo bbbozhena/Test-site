@@ -3,7 +3,7 @@ import "./JobBar.scss";
 import moment from "moment";
 import JobDetails from "../../JobDetails/JobDetail/JobDetail";
 
-function JobBar({ item }) {
+function JobBar({ item, aaa }) {
   const photos = [
     "Hospital image in circle.svg",
     "Hospital image in circle2.svg",
@@ -33,7 +33,7 @@ function JobBar({ item }) {
   return (
     <>
       <ul className="flex flex-col ">
-        <li className="flex flex-row job-bar-long  px-12 py-10">
+        <li onClick={aaa} className="flex flex-row job-bar-long  px-12 py-10">
           <img className="mr-6" src={randomPhoto} width={85} />
           <div className="text-left">
             <h1>{item.title}</h1>
