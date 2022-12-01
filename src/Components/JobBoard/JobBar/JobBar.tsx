@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import "./JobBar.scss";
 import moment from "moment";
-import JobDetails from "../../JobDetails/JobDetail/JobDetail";
+import JobDetails from "../../JobDetails/JobDetail/JobDetail.tsx";
 
 function JobBar({ item, aaa }) {
+  const [showDetails, setShowDetails] = useState(null);
+
   const photos = [
     "Hospital image in circle.svg",
     "Hospital image in circle2.svg",
@@ -30,10 +32,18 @@ function JobBar({ item, aaa }) {
     })
     .catch((error) => console.log("error", error));
 
+  const handleClick = (e) => {
+    setShowDetails(e);
+  };
+
   return (
     <>
       <ul className="flex flex-col ">
-        <li onClick={aaa} className="flex flex-row job-bar-long  px-12 py-10">
+        <li
+          className="flex flex-row job-bar-long  px-12 py-10"
+          onClick={() => handleClick(item)}
+        >
+          {showDetails === item ? <JobDetails item={item} /> : null}
           <img className="mr-6" src={randomPhoto} width={85} />
           <div className="text-left">
             <h1>{item.title}</h1>

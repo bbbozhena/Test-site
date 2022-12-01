@@ -42,23 +42,11 @@ function App() {
     count: inf.length,
   });
 
-  function test(i) {
-    console.log(<JobDetails item={i} key={i.id} />);
-  }
-
   return (
     <div className="App">
       <div className="items">
         {inf.slice(firstContentIndex, lastContentIndex).map((el: any) => {
-          return (
-            <JobBar
-              aaa={function testCallback() {
-                return test(el);
-              }}
-              item={el}
-              key={el.id}
-            />
-          );
+          return <JobBar item={el} key={el.id} />;
         })}
       </div>
       <div className="pagination">
