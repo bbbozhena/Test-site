@@ -93,7 +93,6 @@ function JobDetails({ item }) {
             </div>
           </div>
         </div>
-
         <div>
           <div className="map-block">
             <h3 className="map-name text-start mb-3">

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./App.scss";
+import { Routes, Route, Link } from "react-router-dom";
 import JobBar from "../JobBoard/JobBar/JobBar.tsx";
 import axios from "axios";
 import usePagination from "../../Hooks/usePagination.tsx";
@@ -43,35 +44,37 @@ function App() {
   });
 
   return (
-    <div className="App">
-      <div className="items">
-        {inf.slice(firstContentIndex, lastContentIndex).map((el: any) => {
-          return <JobBar item={el} key={el.id} />;
-        })}
-      </div>
-      <div className="pagination">
-        <p className="text">
-          {page}/{totalPages}
-        </p>
-        <div className="pag-block">
-          <button onClick={prevPage} className="page">
-            &larr;
-          </button>
-          {[...Array(totalPages).keys()].map((el) => (
-            <button
-              onClick={() => setPage(el + 1)}
-              key={el}
-              className={`page ${page === el + 1 ? "active" : ""} number`}
-            >
-              {el + 1}
+    <>
+      <div className="App">
+        <div className="items">
+          {inf.slice(firstContentIndex, lastContentIndex).map((el: any) => {
+            return <JobBar item={el} key={el.id} />;
+          })}
+        </div>
+        <div className="pagination">
+          <p className="text">
+            {page}/{totalPages}
+          </p>
+          <div className="pag-block">
+            <button onClick={prevPage} className="page">
+              &larr;
             </button>
-          ))}
-          <button onClick={nextPage} className="page">
-            &rarr;
-          </button>
+            {[...Array(totalPages).keys()].map((el) => (
+              <button
+                onClick={() => setPage(el + 1)}
+                key={el}
+                className={`page ${page === el + 1 ? "active" : ""} number`}
+              >
+                {el + 1}
+              </button>
+            ))}
+            <button onClick={nextPage} className="page">
+              &rarr;
+            </button>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 

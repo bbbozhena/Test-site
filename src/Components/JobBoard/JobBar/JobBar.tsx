@@ -3,7 +3,7 @@ import "./JobBar.scss";
 import moment from "moment";
 import JobDetails from "../../JobDetails/JobDetail/JobDetail.tsx";
 
-function JobBar({ item, aaa }) {
+function JobBar({ item }) {
   const [showDetails, setShowDetails] = useState(null);
 
   const photos = [
@@ -32,8 +32,8 @@ function JobBar({ item, aaa }) {
     })
     .catch((error) => console.log("error", error));
 
-  const handleClick = (e) => {
-    setShowDetails(e);
+  const handleClick = (item) => {
+    setShowDetails(item);
   };
 
   return (
