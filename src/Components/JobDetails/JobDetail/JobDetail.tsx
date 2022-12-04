@@ -1,9 +1,17 @@
 import React from "react";
 import "./JobDetail.scss";
 import moment from "moment";
+import {
+  Routes,
+  Route,
+  Link,
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
 
 function JobDetails({ item }) {
   const daysAgo = moment(`${item.createdAt}`, "YYYYMMDD").fromNow();
+
   return (
     <>
       <div className="flex job">

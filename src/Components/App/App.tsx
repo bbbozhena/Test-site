@@ -1,6 +1,12 @@
 import React, { useEffect, useState } from "react";
 import "./App.scss";
-import { Routes, Route, Link } from "react-router-dom";
+import {
+  Routes,
+  Route,
+  Link,
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
 import JobBar from "../JobBoard/JobBar/JobBar.tsx";
 import axios from "axios";
 import usePagination from "../../Hooks/usePagination.tsx";
@@ -74,6 +80,16 @@ function App() {
           </div>
         </div>
       </div>
+      {inf.map((item) => {
+        return (
+          <Routes>
+            <Route
+              path={`/details + ${item.id}`}
+              element={<JobDetails item={item} key={item.id} />}
+            />
+          </Routes>
+        );
+      })}
     </>
   );
 }
