@@ -5,7 +5,7 @@ import JobDetails from "../../JobDetails/JobDetail/JobDetail.tsx";
 import { createBrowserRouter, Link } from "react-router-dom";
 
 function JobBar({ item }) {
-  const [showDetails, setShowDetails] = useState(null);
+  // const [showDetails, setShowDetails] = useState(null);
 
   const photos = [
     "Hospital image in circle.svg",
@@ -40,8 +40,9 @@ function JobBar({ item }) {
   return (
     <>
       <ul className="flex flex-col ">
-        <Link to={`/details + ${item.id}`}>
+        <Link to={`/details/${item.id}`}>
           <li
+            key={item.id}
             className="flex flex-row job-bar-long  px-12 py-10"
             // onClick={() => handleClick(item)}
           >

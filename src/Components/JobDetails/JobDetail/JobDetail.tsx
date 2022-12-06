@@ -7,10 +7,14 @@ import {
   Link,
   createBrowserRouter,
   RouterProvider,
+  useParams,
 } from "react-router-dom";
 
 function JobDetails({ item }) {
   const daysAgo = moment(`${item.createdAt}`, "YYYYMMDD").fromNow();
+
+  const { itemId } = useParams();
+  const thisDetails = item.find((item) => item.id === itemId);
 
   return (
     <>
@@ -29,15 +33,15 @@ function JobDetails({ item }) {
           <div className="flex flex-col justify-items-start">
             <button className="apply-button">Apply now</button>
             <div className="job-title flex  justify-between ">
-              <h3 className="text-start mt-5">{item.title}</h3>
+              <h3 className="text-start mt-5">{thisDetails.title}</h3>
               <div className="flex flex-col">
-                <span className="mt-5">€ {item.salary}</span>
+                <span className="mt-5">€ {thisDetails.salary}</span>
                 <p>Brutto, per year</p>
               </div>
             </div>
             <span className="posted-ago flex mt-5 ">Posted {daysAgo}</span>
             <p className=" flex text-start font-sans font-normal text-lg leading-6 mt-5 mb-10">
-              {item.description}
+              {thisDetails.description}
             </p>
             <h6 className="flex font-bold mb-5">Responsibilities</h6>
             <p className=" flex text-start font-sans font-normal text-lg leading-6">
@@ -69,8 +73,12 @@ function JobDetails({ item }) {
             </p>
             <ul className="text-start list-disc list-outside">
               Our physicians enjoy a wide range of benefits, including:
-              {item.benefits.map((b) => {
-                return <li className="m-0">{b}</li>;
+              {thisDetails.benefits.map((b) => {
+                return (
+                  <li key={b.index} className="m-0">
+                    {b}
+                  </li>
+                );
               })}
             </ul>
             <button className="apply-button">Apply now</button>
@@ -79,14 +87,22 @@ function JobDetails({ item }) {
               <div className="line"></div>
               <p className="text-start mb-2">Employment type</p>
               <div className="flex">
-                {item.employment_type.map((e) => {
-                  return <div className="employments mr-5">{e}</div>;
+                {thisDetails.employment_type.map((e) => {
+                  return (
+                    <div key={e.index} className="employments mr-5">
+                      {e}
+                    </div>
+                  );
                 })}
               </div>
               <p className="text-start mt-5 mb-2">Benefits</p>
               <div className="flex">
-                {item.benefits.map((b) => {
-                  return <div className="employments2 mr-5">{b}</div>;
+                {thisDetails.benefits.map((b) => {
+                  return (
+                    <div key={b.index} className="employments2 mr-5">
+                      {b}
+                    </div>
+                  );
                 })}
               </div>
             </div>
@@ -94,8 +110,8 @@ function JobDetails({ item }) {
               <h3 className="text-start mt-20">Attached images</h3>
               <div className="line"></div>
               <div className="flex mt-5">
-                {item.pictures.map((img) => {
-                  return <img className="mr-5" src={img}></img>;
+                {thisDetails.pictures.map((img) => {
+                  return <img key={img.index} className="mr-5" src={img}></img>;
                 })}
               </div>
             </div>
@@ -106,7 +122,7 @@ function JobDetails({ item }) {
             <h3 className="map-name text-start mb-3">
               Department name.
               <br />
-              {item.name}
+              {thisDetails.name}
             </h3>
             <div className="flex location-map">
               <img src="./icons/location.svg" />
@@ -115,16 +131,18 @@ function JobDetails({ item }) {
                 <p className="flex mb-3">Gürtel 18-20</p>
               </div>
             </div>
-            <span className="flex">{item.phone},</span>
-            <p className="text-start">{item.email}</p>
+            <span className="flex">{thisDetails.phone},</span>
+            <p className="text-start">{thisDetails.email}</p>
             <map></map>
           </div>
         </div>
       </div>
-      <button className="flex button-return">
-        <img className="mr-10" src="./icons/Arrow.svg" />
-        <p>RETURN TO JOB BOARD</p>
-      </button>
+      <Link to="/">
+        <button className="flex button-return">
+          <img className="mr-10" src="./icons/Arrow.svg" />
+          <p>RETURN TO JOB BOARD</p>
+        </button>
+      </Link>
     </>
   );
 }
