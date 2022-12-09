@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import "./App.scss";
-import { Link, Route, Routes, useParams } from "react-router-dom";
+import { Link, Route, Routes, useParams, useNavigate } from "react-router-dom";
 import JobBar from "../JobBoard/JobBar/JobBar.tsx";
 import axios from "axios";
-import usePagination from "../../Hooks/usePagination.tsx";
+import Pagination from "../Pagination/Pagination.tsx";
 import JobDetails from "../JobDetails/JobDetail/JobDetail.tsx";
+import usePagination from "../../Hooks/usePagination.tsx";
 
 function App() {
   const [inf, setInf] = useState([]);
@@ -29,15 +30,9 @@ function App() {
         console.log(error);
       });
   }, []);
-
-  const {
+  const  {
     firstContentIndex,
     lastContentIndex,
-    nextPage,
-    prevPage,
-    page,
-    setPage,
-    totalPages,
   } = usePagination({
     contentPerPage: 5,
     count: inf.length,
@@ -51,37 +46,11 @@ function App() {
             return <JobBar item={el} key={el.id} />;
           })}
         </div>
-        <div className="pagination">
-          <p className="text">
-            {page}/{totalPages}
-          </p>
-          <div className="pag-block">
-            <button onClick={prevPage} className="page">
-              &larr;
-            </button>
-            {[...Array(totalPages).keys()].map((el) => (
-              <button
-                onClick={() => setPage(el + 1)}
-                key={el}
-                className={`page ${page === el + 1 ? "active" : ""} number`}
-              >
-                {el + 1}
-              </button>
-            ))}
-            <button onClick={nextPage} className="page">
-              &rarr;
-            </button>
-          </div>
-        </div>
+        <Pagination inf={inf} />
       </div>
-
-      <Routes>
-        <Route path="/" element={<JobBar />}></Route>
-        <Route
-          path="/details/:detailsId"
-          element={<JobDetails />}
-        ></Route>
-      </Routes>
+      {/* {inf.map((i) => {
+        return <JobDetails job={i} />;
+      })} */}
     </>
   );
 }
