@@ -30,22 +30,11 @@ function App() {
         console.log(error);
       });
   }, []);
-  const  {
-    firstContentIndex,
-    lastContentIndex,
-  } = usePagination({
-    contentPerPage: 5,
-    count: inf.length,
-  });
 
   return (
     <>
       <div className="App">
-        <div className="items">
-          {inf.slice(firstContentIndex, lastContentIndex).map((el: any) => {
-            return <JobBar item={el} key={el.id} />;
-          })}
-        </div>
+        <div className="items"></div>
         <Pagination inf={inf} />
       </div>
       {/* {inf.map((i) => {
