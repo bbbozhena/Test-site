@@ -2,9 +2,9 @@ import React from "react";
 import "./JobBar.scss";
 import moment from "moment";
 import JobDetails from "../../JobDetails/JobDetail/JobDetail.tsx";
-import { Link } from "react-router-dom";
+import { Link, Routes, Route } from "react-router-dom";
 
-function JobBar({ item }) {
+function JobBar({ item, index }) {
   // const [showDetails, setShowDetails] = useState(null);
 
   const photos = [
@@ -43,12 +43,15 @@ function JobBar({ item }) {
         <li
           key={item.id}
           className="flex flex-row job-bar-long  px-12 py-10"
+
           // onClick={() => handleClick(item)}
         >
           {/* {showDetails === item ? <JobDetails item={item} /> : null} */}
           <img className="mr-6" src={randomPhoto} width={85} />
           <div className="text-left">
-            <h1>{item.title}</h1>
+            <Link to={`/${index + 1}`}>
+              <h1>{item.title}</h1>
+            </Link>
             <p className="description">Department name • {item.name}</p>
             <div className="flex">
               <img className="mr-2" src="./icons/Combined Shape.svg" />
@@ -67,7 +70,11 @@ function JobBar({ item }) {
           </div>
         </li>
       </ul>
+      <Routes>
+      <Route path="/:userId" element={<JobDetails job={item}/>}/>
+      </Routes>
     </>
+
   );
 }
 export default JobBar;

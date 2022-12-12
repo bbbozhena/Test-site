@@ -40,6 +40,7 @@ function App() {
       {/* {inf.map((i) => {
         return <JobDetails job={i} />;
       })} */}
+      
     </>
   );
 }
