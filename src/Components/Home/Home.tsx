@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from "react";
-import "./App.scss";
 import { Link, Route, Routes, useParams, useNavigate } from "react-router-dom";
 import JobBar from "../JobBoard/JobBar/JobBar.tsx";
 import axios from "axios";
 import Pagination from "../Pagination/Pagination.tsx";
 import JobDetails from "../JobDetails/JobDetail/JobDetail.tsx";
 import usePagination from "../../Hooks/usePagination.tsx";
-import Home from "../Home/Home.tsx";
+import { isHtmlElement } from "react-router-dom/dist/dom";
 
-function App() {
-  const [inf, setInf] = useState<any[]>([]);
+function Home() {
+  const [inf, setInf] = useState([]);
 
   const apiUrl = "https://api.json-generator.com/";
   const apiToken = "wm3gg940gy0xek1ld98uaizhz83c6rh2sir9f9fu";
@@ -30,13 +29,10 @@ function App() {
         console.log(error);
       });
   }, []);
-
   return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/:userId" element={<JobDetails />} />
-    </Routes>
+    <>
+      <Pagination inf={inf} />
+    </>
   );
 }
-
-export default App;
+export default Home;

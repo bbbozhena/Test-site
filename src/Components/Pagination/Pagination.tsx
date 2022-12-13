@@ -17,8 +17,8 @@ function Pagination({ inf }) {
   });
   return (
     <>
-      {inf.slice(firstContentIndex, lastContentIndex).map((el: any, index) => {
-        return <JobBar item={el} key={el.id} index={index} />;
+      {inf.slice(firstContentIndex, lastContentIndex).map((el: any) => {
+        return <JobBar item={el} key={el.id} />;
       })}
       <div className="pagination">
         <p className="text">
