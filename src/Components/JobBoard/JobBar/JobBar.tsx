@@ -1,8 +1,7 @@
 import React from "react";
 import "./JobBar.scss";
 import moment from "moment";
-import JobDetails from "../../JobDetails/JobDetail/JobDetail.tsx";
-import { Link, Routes, Route, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function JobBar({ item }) {
   const photos = [
@@ -16,7 +15,6 @@ function JobBar({ item }) {
   const randomPhoto = photos[Math.floor(Math.random() * photos.length)];
 
   const daysAgo = moment(`${item.createdAt}`, "YYYYMMDD").fromNow();
-  let navigate = useNavigate();
 
   // const requestOptions = {
   //   method: "GET",
@@ -42,11 +40,9 @@ function JobBar({ item }) {
         <li key={item.id} className="flex flex-row job-bar-long  px-12 py-10">
           <img className="mr-6" src={randomPhoto} width={85} />
           <div className="text-left">
-            {/* <h1 onClick={() => navigate(`/${item.id}`)}>{item.title}</h1> */}
             <Link to={`/${item.id}`}>
               <h1>{item.title}</h1>
             </Link>
-
             <p className="description">Department name • {item.name}</p>
             <div className="flex">
               <img className="mr-2" src="./icons/Combined Shape.svg" />

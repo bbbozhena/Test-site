@@ -1,11 +1,8 @@
 import React, { useEffect, useState } from "react";
 import "./App.scss";
-import { Link, Route, Routes, useParams, useNavigate } from "react-router-dom";
-import JobBar from "../JobBoard/JobBar/JobBar.tsx";
 import axios from "axios";
-import Pagination from "../Pagination/Pagination.tsx";
+import { Route, Routes } from "react-router-dom";
 import JobDetails from "../JobDetails/JobDetail/JobDetail.tsx";
-import usePagination from "../../Hooks/usePagination.tsx";
 import Home from "../Home/Home.tsx";
 
 function App() {
@@ -31,10 +28,12 @@ function App() {
       });
   }, []);
 
+  console.log(inf)
+
   return (
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="/:userId" element={<JobDetails />} />
+      <Route path="/:userId" element={<JobDetails inf={inf} />} />
     </Routes>
   );
 }

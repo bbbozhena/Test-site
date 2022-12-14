@@ -1,4 +1,5 @@
 import React from "react";
+import "./Pagination.scss";
 import usePagination from "../../Hooks/usePagination.tsx";
 import JobBar from "../JobBoard/JobBar/JobBar.tsx";
 
