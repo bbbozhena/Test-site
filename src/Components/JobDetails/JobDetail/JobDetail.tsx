@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./JobDetail.scss";
 import moment from "moment";
 import { Link, useParams } from "react-router-dom";
+import GetGeolocation from "../../Map/Map.tsx";
 
 function JobDetails({ inf }) {
   let { userId } = useParams();
@@ -112,21 +113,26 @@ function JobDetails({ inf }) {
               </div>
             </div>
             <div>
-              <div className="map-block">
-                <h3 className="map-name text-start mb-3">
-                  Department name.
-                  <br />
-                  {job.name}
-                </h3>
-                <div className="flex location-map">
-                  <img src="./icons/location.svg" />
-                  <div>
-                    <p>AKH Wien, 1090 Wien, Währinger </p>
-                    <p className="flex mb-3">Gürtel 18-20</p>
+              <div className="map-container">
+                <div className="map-block">
+                  <h3 className="map-name text-start mb-3">
+                    Department name.
+                    <br />
+                    {job.name}
+                  </h3>
+                  <div className="flex location-map">
+                    <img src="./icons/location.svg" />
+                    <div>
+                      <p>AKH Wien, 1090 Wien, Währinger </p>
+                      <p className="flex mb-3">Gürtel 18-20</p>
+                    </div>
                   </div>
+                  <span className="flex">{job.phone},</span>
+                  <p className="text-start">{job.email}</p>
                 </div>
-                <span className="flex">{job.phone},</span>
-                <p className="text-start">{job.email}</p>
+                <div className="map">
+                  <GetGeolocation location={job.location}></GetGeolocation>
+                </div>
               </div>
             </div>
           </div>

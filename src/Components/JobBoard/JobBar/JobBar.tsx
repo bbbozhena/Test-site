@@ -16,24 +16,7 @@ function JobBar({ item }) {
 
   const daysAgo = moment(`${item.createdAt}`, "YYYYMMDD").fromNow();
 
-  // const requestOptions = {
-  //   method: "GET",
-  // };
-
-  // fetch(
-  //   `https://api.geoapify.com/v1/geocode/reverse?lat=${item.location.lat}&lon=${item.location.long}&apiKey=01bf973e39c34b61aef035b02da1863b`,
-  //   requestOptions
-  // )
-  //   .then((response) => response.json())
-  //   .then((result) => {
-  //     console.log(result.features[0].properties);
-  //   })
-  //   .catch((error) => console.log("error", error));
-
-  // const handleClick = (e) => {
-  //   setShowDetails(e);
-  // };
-
+  
   return (
     <>
       <ul className="flex flex-col ">
