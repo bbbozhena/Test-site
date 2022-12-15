@@ -6,14 +6,21 @@ body {
 }
 
 li {
-    margin: 29px 100px;
+    margin: 2% 5%;
     cursor: pointer;
 }
 .job-bar-long {
+    @media only screen and (max-width: 1240px) {
+        display: block;
+    }
     background: #ffffff;
     box-shadow: 2px 1px 7px rgba(0, 0, 0, 0.08), 0px 2px 1px -1px rgba(0, 0, 0, 0.04), 0px 1px 3px rgba(0, 0, 0, 0.12);
     border-radius: 8px;
     h1 {
+        @media only screen and (max-width: 1240px) {
+            width: auto;
+            margin: 8% 0%;
+        }
         font-family: "Proxima Nova";
         font-style: normal;
         font-weight: 700;
@@ -21,9 +28,6 @@ li {
         line-height: 25px;
         letter-spacing: -0.625px;
         color: #3a4562;
-        flex: none;
-        order: 1;
-        flex-grow: 0;
         width: 712px;
         height: 50px;
     }
@@ -36,9 +40,7 @@ li {
         letter-spacing: 0.23619px;
         color: #878d9d;
         flex: none;
-        order: 2;
         align-self: stretch;
-        flex-grow: 0;
         margin: 4px 0px;
     }
     .location {
@@ -49,6 +51,23 @@ li {
         line-height: 25px;
         letter-spacing: 0.23619px;
         color: #878d9d;
+    }
+}
+.stars {
+    @media only screen and (max-width: 1240px) {
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        padding: 0%;
+        margin: 2% 0%;
+    }
+}
+.save {
+    @media only screen and (max-width: 1240px) {
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        margin: 2% 0%;
     }
 }
 .post-day {

@@ -20,11 +20,11 @@ function JobBar({ item }) {
   return (
     <>
       <ul className="flex flex-col ">
-        <li key={item.id} className="flex flex-row job-bar-long  px-12 py-10">
+        <li key={item.id} className="flex job-bar-long  px-12 py-10">
           <img className="mr-6" src={randomPhoto} width={85} />
-          <div className="text-left">
+          <div className="text-left ">
             <Link to={`/${item.id}`}>
-              <h1>{item.title}</h1>
+              <h1 className="title">{item.title}</h1>
             </Link>
             <p className="description">Department name • {item.name}</p>
             <div className="flex">
@@ -32,10 +32,10 @@ function JobBar({ item }) {
               <p className="location"></p>
             </div>
           </div>
-          <img className="px-10" src="./icons/Rating.svg"></img>
+          <img className="px-10 stars" src="./icons/Rating.svg"></img>
           <div className="flex flex-col ">
             <img
-              className="ml-24"
+              className="ml-24 save"
               src="./icons/Rectangle 31.svg"
               width={16}
               height={20}
