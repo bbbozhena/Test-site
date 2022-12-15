@@ -130,7 +130,7 @@ function JobDetails({ inf }) {
                   <span className="flex">{job.phone},</span>
                   <p className="text-start">{job.email}</p>
                 </div>
-                <div className="map">
+                <div className="leaflet-container ">
                   <GetGeolocation location={job.location}></GetGeolocation>
                 </div>
               </div>

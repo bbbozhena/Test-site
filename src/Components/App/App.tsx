@@ -28,7 +28,7 @@ function App() {
       });
   }, []);
 
-  console.log(inf)
+  console.log(inf);
 
   return (
     <Routes>

@@ -1,25 +1,30 @@
 import React, { useState } from "react";
-import { MapContainer, TileLayer } from "react-leaflet";
+import "./Map.scss";
+import { MapContainer, TileLayer, Marker } from "react-leaflet";
 
 function GetGeolocation(location) {
   const lat = location.location.lat;
   const long = location.location.long;
   console.log("lat", lat);
   console.log("long", long);
+
   return (
-    <div className="map">
-      <MapContainer
-        center={[lat, long]}
-        zoom={13}
-        scrollWheelZoom={false}
-        dragging={false}
-      >
-        <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        />
-      </MapContainer>
-    </div>
+    <MapContainer
+      center={[lat, long]}
+      zoom={6}
+      maxZoom={10}
+      attributionControl={true}
+      zoomControl={true}
+      doubleClickZoom={true}
+      scrollWheelZoom={true}
+      dragging={true}
+      animate={true}
+      easeLinearity={0.35}
+    >
+      <TileLayer url="http://{s}.tile.osm.org/{z}/{x}/{y}.png" />
+      <Marker position={[lat, long]}></Marker>
+    </MapContainer>
   );
 }
+
 export default GetGeolocation;
