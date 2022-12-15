@@ -1,9 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import "./JobBar.scss";
 import moment from "moment";
 import { Link } from "react-router-dom";
 
 function JobBar({ item }) {
+  const [position, setPosition] = useState([]);
+  const YOUR_API_KEY = "01bf973e39c34b61aef035b02da1863b";
+
+  fetch(
+    `https://api.geoapify.com/v1/geocode/reverse?lat=${item.location.lat}&lon=${item.location.long}&apiKey=${YOUR_API_KEY}`
+  )
+    .then((response) => response.json())
+    .then((result) => {
+      if (result.features.length) {
+        setPosition(result.features[0].properties.formatted);
+      } else {
+        console.log("No address found");
+      }
+    });
+
   const photos = [
     "Hospital image in circle.svg",
     "Hospital image in circle2.svg",
@@ -16,7 +31,6 @@ function JobBar({ item }) {
 
   const daysAgo = moment(`${item.createdAt}`, "YYYYMMDD").fromNow();
 
-  
   return (
     <>
       <ul className="flex flex-col ">
@@ -29,7 +43,7 @@ function JobBar({ item }) {
             <p className="description">Department name • {item.name}</p>
             <div className="flex">
               <img className="mr-2" src="./icons/Combined Shape.svg" />
-              <p className="location"></p>
+              <p className="location">{position}</p>
             </div>
           </div>
           <img className="px-10 stars" src="./icons/Rating.svg"></img>
